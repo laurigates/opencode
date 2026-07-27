@@ -1,0 +1,8 @@
+name: pathtest
+on:
+  workflow_dispatch:
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: laurigates/opencode/github-pathtest@dev
