@@ -1,0 +1,11 @@
+name: "path probe"
+description: "probe github.action_path resolution for a subdirectory action"
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: |
+        echo "action_path=${{ github.action_path }}"
+        echo "--- resolving ../install ---"
+        ls -l "${{ github.action_path }}/../install" && echo "PROBE_RESULT=found" || echo "PROBE_RESULT=missing"
+        head -1 "${{ github.action_path }}/../install" || true
