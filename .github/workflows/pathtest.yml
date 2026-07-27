@@ -5,4 +5,13 @@ jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
-      - uses: laurigates/opencode/github-pathtest@dev
+      - uses: laurigates/opencode/github@fix/pin-installer-and-cli-version
+        continue-on-error: true
+        with:
+          model: opencode/glm-5.2
+          version: "1.18.6"
+      - name: What actually got installed
+        run: |
+          echo "--- resolved binary ---"
+          ls -l ~/.opencode/bin/ || true
+          ~/.opencode/bin/opencode --version || true
